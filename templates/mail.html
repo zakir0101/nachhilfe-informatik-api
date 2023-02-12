@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+<div>
+    <h3 style="text-align: center">{{ first_name + " "+last_name }}</h3>
+    <h4 style="text-align: center">
+        <span style="color:dodgerblue">is interested in</span>
+        {{ interested_in }}</h4>
+    <div>
+        <span>email :  {{ email }} </span>
+    </div>
+    {% if number %}
+    <div>
+        <span>number :  {{ number }} </span>
+    </div>
+    {% endif %}
+
+
+    {% if how_oft %}
+    <div>
+        <span>how oft :  {{ how_oft }} </span>
+    </div>
+    {% elif how_long %}
+    <div>
+        <span>how long : {{ how_long }} </span>
+    </div>
+    {% elif deadline %}
+    <div>
+        <span>deadline : {{ deadline }} </span>
+    </div>
+    {% endif %}
+
+    {% if budget_language %}
+    <div>
+        <span>budget and    language : {{ budget_language }} </span>
+    </div>
+    {% endif %}
+
+    {% if budget_project %}
+    <div>
+        <p>budget and task description : {{ budget_project }} </p>
+    </div>
+    {% endif %}
+
+
+</div>
+</body>
+</html>
