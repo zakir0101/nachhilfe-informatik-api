@@ -3,7 +3,6 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 import requests as requests
-from flask import Flask
 
 from dotenv import load_dotenv
 

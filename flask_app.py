@@ -3,11 +3,10 @@ import logging
 import os
 import traceback
 
-from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
-from flask_mail import BadHeaderError
+from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
-from send_mail_1 import config_mail, create_msg1, create_msg2, create_msg3, create_msg4
+from send_mail_1 import config_mail, create_msg4
 
 from dotenv import load_dotenv
 
