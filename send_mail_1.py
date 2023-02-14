@@ -10,8 +10,8 @@ def config_mail(app):
         "MAIL_PORT": 587,
         "MAIL_USE_TLS": True,
         "MAIL_USE_SSL": False,
-        "MAIL_USERNAME": os.environ['EMAIL_USERNAME'],
-        "MAIL_PASSWORD": os.environ['EMAIL_PASSWORD']
+        "MAIL_USERNAME": os.environ['EMAIL_USERNAME1'],
+        "MAIL_PASSWORD": os.environ['EMAIL_PASSWORD1']
     }
     app.config.update(mail_settings)
     mail = Mail(app)
@@ -50,8 +50,8 @@ def create_msg3(app, name, user_msg, files):
 
 def create_msg4(app, msg_html, first_name, interested_in,  files):
     msg = Message(f"{first_name}, interested in {interested_in}",
-                  sender=os.environ['EMAIL_USERNAME'],
-                  recipients=[os.environ['EMAIL_USERNAME']])
+                  sender=os.environ['EMAIL_USERNAME1'],
+                  recipients=[os.environ['EMAIL_USERNAME1']])
     msg.html = msg_html
     for f in files:
         print(f.filename)

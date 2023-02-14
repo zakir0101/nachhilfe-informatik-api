@@ -9,24 +9,18 @@ from werkzeug.utils import secure_filename
 from flask_cors import CORS
 from send_mail_1 import config_mail, create_msg1, create_msg2, create_msg3, create_msg4
 
+from dotenv import load_dotenv
+
+
 app = Flask(__name__)
 UPLOAD_FOLDER = 'files'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
 
 
-# @app.route("/send")
-# def send_msg():
-#     mail = config_mail(app)
-#     mail.send(create_msg1())
-#     return "Message sent!"
-#
-#
-# @app.route("/send2")
-# def send_msg2():
-#     mail = config_mail(app)
-#     mail.send(create_msg2(app))
-#     return "Message sent!"
+project_folder = app.root_path  # adjust as appropriate
+load_dotenv(os.path.join(project_folder, '.env'))
+print('domain ', os.environ['DOMAIN'])
 
 
 @app.route("/")
@@ -37,17 +31,6 @@ def get():
 @app.route("/<tab>/<lang>")
 def get_home(tab, lang):
     return render_template('index.html', menu=tab, lang=lang)
-
-
-# @app.route('/json', methods=['POST'])
-# def request_json():
-#     # check if the post request has the file part
-#     data = request.json
-#
-#     print(data['name'])
-#     print(data['age'])
-#     print()
-#     return jsonify(dict(type="ok", msg="successful"))
 
 
 def save_files(request2):

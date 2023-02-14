@@ -15,7 +15,6 @@ msg.set_content("this is content of the message")
 # me == the sender's email address
 # you == the recipient's email address
 
-
 msg['Subject'] = f'subject of the email'
 msg['From'] = "zakir.elkheir@gmail.com"
 msg['To'] = "zakir1996@gmail.com"
