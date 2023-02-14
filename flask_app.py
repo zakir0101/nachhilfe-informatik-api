@@ -6,7 +6,7 @@ import traceback
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
-from send_mail_1 import config_mail, create_msg4
+from send_mail_1 import config_mail, create_msg4, create_msg5
 
 from dotenv import load_dotenv
 
@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 app = Flask(__name__)
 UPLOAD_FOLDER = 'files'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+# CORS(app)
 
 
 project_folder = app.root_path  # adjust as appropriate
@@ -52,7 +52,7 @@ def delete_files(request2):
 
 
 @app.route('/file', methods=['POST'])
-def upload_file():
+def send_msg():
     first_name = request.form['first_name']  #
     last_name = request.form['last_name']  #
     email = request.form['email']  #
@@ -80,12 +80,35 @@ def upload_file():
         return json.dumps(res)
 
 
-'''
-    <!doctype html>
-<title>Upload new File</title>
-<h1>hi {request.form['name']} </h1>
-<h1>File uploaded successfully</h1> 
 
-'''
+@app.route('/file2', methods=['POST'])
+def send_msg2():
+    first_name = request.form['first_name']  #
+    last_name = request.form['last_name']  #
+    email = request.form['email']  #
+    issue = request.form.get('issue')  #
+    msg = request.form['msg']  #
+
+    html_email = render_template('mail2.html', **locals())
+
+    mail = config_mail(app)
+
+    try:
+        mail.send(create_msg5(app, html_email, first_name, issue))
+    except Exception as e:
+        logging.error(traceback.format_exc())
+        res = dict(type="error");
+        return json.dumps(res)
+        # return "your request was unfortunately unsuccessful"
+    else:
+        res = dict(type="success");
+        return json.dumps(res)
+
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run()

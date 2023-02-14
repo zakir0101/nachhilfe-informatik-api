@@ -59,3 +59,12 @@ def create_msg4(app, msg_html, first_name, interested_in,  files):
         msg.attach(filename=f_name, content_type=f.mimetype, data=f.stream.read())
 
     return msg
+
+
+
+def create_msg5(app, msg_html, first_name, issue):
+    msg = Message(issue,
+                  sender=os.environ['EMAIL_USERNAME1'],
+                  recipients=[os.environ['EMAIL_USERNAME1']])
+    msg.html = msg_html
+    return msg
