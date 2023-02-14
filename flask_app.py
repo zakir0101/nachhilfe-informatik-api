@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 app = Flask(__name__)
 UPLOAD_FOLDER = 'files'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-CORS(app)
+
 
 
 project_folder = app.root_path  # adjust as appropriate
